@@ -1,0 +1,163 @@
+/* --- ENHANCED ANIMATIONS FILE --- */
+
+:root {
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) skewY(2deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) skewY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rotateScrollText {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+@keyframes shineEffect {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
+}
+
+/* Section Activation Triggers */
+section .reveal-text,
+section .reveal-tag,
+section .reveal-btn,
+section .rating-card {
+    opacity: 0;
+    transition: all 1s var(--ease-out-expo);
+}
+
+section.active .reveal-text {
+    animation: fadeInUp 1.2s var(--ease-out-expo) forwards;
+}
+
+section.active .reveal-tag {
+    animation: scaleUp 0.8s var(--ease-out-expo) forwards;
+}
+
+section.active .reveal-btn {
+    animation: fadeInUp 1.2s var(--ease-out-expo) 0.3s forwards;
+}
+
+/* Staggered text reveal if multiple lines */
+section.active h1.reveal-text {
+    animation-delay: 0.1s;
+}
+
+section.active p.reveal-text {
+    animation-delay: 0.2s;
+}
+
+/* Background and decorative animations */
+.bg-scroll-anim {
+    animation: rotateScrollText 30s linear infinite;
+    will-change: transform;
+}
+
+.cart-pulse {
+    animation: pulse 2s infinite;
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Hover Shine Effect for Buttons */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(30deg);
+    transition: 0.6s;
+}
+
+.btn:hover::after {
+    left: 150%;
+}
